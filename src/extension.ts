@@ -2,6 +2,13 @@ import * as vscode from 'vscode';
 
 export function activate(context: vscode.ExtensionContext) {
 
+	// https://code.visualstudio.com/api/references/vscode-api#l10n
+	// `bundle` and `uri` will be `Undefined`
+	// if there was no bundle found or when we are running with the default language
+	console.log(vscode.l10n.uri); // URI of the localization bundle
+	console.log(vscode.l10n.bundle);
+	console.log(vscode.l10n.bundle?.['Hello World from extension!']);
+
 	vscode.window.showInformationMessage(
 		// example of string w/ arguments
 		vscode.l10n.t('Your extension got activated with the {0} language!', vscode.env.language)
